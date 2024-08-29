@@ -1,0 +1,82 @@
+if [[ $* == *--help ]]; then
+    echo "cottonfetch v1.2"
+    echo "created by @plasmacotton"
+    echo
+    echo "special thanks to:"
+    echo "•lilliana.raquel (discord)"
+    echo "•devereo_bassico (discord)"
+    echo "•Mikel (stackoverflow)"
+    echo
+    echo "cottonfetch • the actual fetch"
+    echo "cottonfetch --help • this help message"
+    echo
+    echo "you can alias cottonfetch to a command you can use anywhere by cd'ing into the location of it and running the following:"
+    echo
+    echo "alias ""cottonfetch\"=\""bash "`pwd`"/cottonfetch""\"
+    echo
+    echo "THE ALIAS BREAKS WHEN THE FILE LOCATION CHANGES!!! RE-RUN THE COMMAND WHEN YOU WANT TO MOVE IT!!!"
+else
+    MSGN=`echo $(($RANDOM % 5))`
+    
+    # thanks devereo_bassico !!
+    case $MSGN in
+      1) MSG="LLA LIAH FARCOTTON!!!" ;;
+      2) MSG="olleh!" ;;
+      3) MSG="JOIN THE COTTON CULT!!!" ;;
+      4) MSG="i esu cottonfetch wtb" ;;
+      *) MSG="rorre" ;;
+    esac
+
+    # thanks Mikel !
+    
+    if [ -f /etc/os-release ]; then
+        . /etc/os-release
+        DISTRO=$NAME
+        VER=$VERSION_ID
+    elif type lsb_release >/dev/null 2>&1; then
+        DISTRO=$(lsb_release -si)
+        VER=$(lsb_release -sr)
+    elif [ -f /etc/lsb-release ]; then
+        . /etc/lsb-release
+        DISTRO=$DISTRIB_ID
+        VER=$DISTRIB_RELEASE
+    elif [ -f /etc/debian_version ]; then
+        DISTRO=Debian
+        VER=$(cat /etc/debian_version)
+    elif [ -f /etc/SuSe-release ]; then
+        ...
+    elif [ -f /etc/redhat-release ]; then
+        ...
+    else
+        # Fall back to uname, e.g. "Linux <version>", also works for BSD, etc.
+        DISTRO=$(uname -s)
+        VER=$(uname -r)
+    fi
+    
+    MACHINE=`uname -m`
+    OS=`uname -o`
+    KERNEL=`uname`
+    KERNELVER=`uname -r`
+    HOST=`uname -n`
+    USERNAME=`whoami`
+
+    #me (plasmacotton) and lilliana.raquel did the same thing with the ascii art so i decided to credit her anyway :)
+    
+    echo "⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⡿⢏⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿   ----"$USERNAME"@"$HOST"----"
+    echo "⢽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣿⣿⣿⣿⣿⣿⣿⣿⣷⣯⣟⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿   OS:" $OS "("$DISTRO")"
+    echo "⢽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡽⣿⣿⣿⣿⣿⣿⣿⣿   Kernel mame:" $KERNEL
+    echo "⢽⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⡟⡿⠿⠁⠻⠿⢻⣿⣿⣿⣿⣿⡽⣿⣿⣿⣿⣿⣿⣿   Kernel version:" $KERNELVER
+    echo "⣻⣿⣿⣿⣿⣿⢷⣿⣿⣿⠛⠟⠀⠀⠄⣂⣐⡀⠠⡈⠉⢿⣿⣿⣿⣽⣿⣿⣿⣿⣿⣿   Machine:" $MACHINE
+    echo "⣺⣿⣿⣿⣿⣟⣿⡏⠉⣡⡠⡐⡊⢁⣭⣭⡭⣄⡉⢘⢈⠲⣤⠹⣿⣷⢿⣿⣿⣿⣿⣿"
+    echo "⣺⣿⣿⣿⣿⡝⠟⢡⡗⣭⡰⡰⡃⡷⠵⢻⠁⡔⣍⡎⣜⠐⠔⠰⡄⢸⣟⣿⣿⣿⣿⣿""   "$MSG
+    echo "⠚⠛⠛⠛⠳⠃⠀⢸⣾⣯⡇⡟⣙⣘⣹⣾⣾⣧⣥⣅⠝⠀⠀⡆⠁⠀⠉⢹⣻⣛⣟⡟"
+    echo "⣤⣤⣤⣤⠀⠀⠀⢸⡇⣿⢐⢯⣵⣿⣿⣿⣿⣿⣿⣿⣯⠦⠐⠀⠀⠀⠀⢀⣿⣿⣿⣥"
+    echo "⣿⣿⣿⣿⡶⠀⠀⠀⣷⢹⠄⠘⢿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⣸⣻⣿⣿⣿⣿"
+    echo "⣻⣿⣿⣿⢷⣧⣤⠀⡞⡄⠇⠀⠒⠉⠛⠿⠿⠟⠋⠀⠀⠀⠀⠀⣸⣾⣿⣯⣿⣿⣿⣿"
+    echo "⣺⣿⣿⣟⣿⣿⣿⣷⣄⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⡾⣿⣿⣿"
+    echo "⣺⣿⣿⣽⣿⣿⠛⢛⡘⠀⠠⣴⡆⡱⣄⡀⠀⠀⣀⡜⡀⣦⣤⣀⡀⠸⣿⢿⣿⣹⣿⣿"
+    echo "⣾⣿⣳⠟⠿⠋⢠⣿⣿⡁⠀⡿⢁⢳⣮⣛⣋⣛⣥⡾⢸⣿⣿⣿⣿⣷⡀⠀⠻⠯⢿⣿"
+    echo "⣾⠏⠁⠀⠀⠀⣾⣿⣿⢀⠀⢹⣎⠡⡙⠿⣗⡿⢟⣱⣿⣿⣷⢸⣿⢻⣇⠀⠀⠀⣸⣿"
+    echo "⢿⣧⡂⠀⠀⣸⣿⠝⣿⢸⠂⠸⣿⣷⣹⣷⣶⣾⣿⣿⣿⣿⣿⣼⡇⣼⣿⡄⠀⣷⣻⣿" 
+    
+fi
